@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {Task} from "../../Task";
-import {TASKS} from "../../mock-tasks";
+import { TaskService } from 'src/app/services/task.service';
+
 
 @Component({
   selector: 'app-tasks',
@@ -10,6 +11,16 @@ import {TASKS} from "../../mock-tasks";
 export class TasksComponent {
   // define property
   // can loop through this array in 
-  tasks : Task[]=TASKS;
+  tasks : Task[]=[];
+
+  // to use the service, have to add it as a provider in the constructor
+  constructor (private taskService : TaskService){}
+  // to access anything fron TaskService : this.taskService.<anything that service provides>
+  // inside ngOnInit btw
+
+  ngOnInit() : void
+  {
+    this.tasks=this.taskService.getTasks();
+  }
 
 }
