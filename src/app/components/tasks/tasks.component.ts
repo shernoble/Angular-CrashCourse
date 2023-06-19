@@ -20,7 +20,10 @@ export class TasksComponent {
 
   ngOnInit() : void
   {
-    this.tasks=this.taskService.getTasks();
+    // subscribe to observable
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.tasks=tasks;
+    })
   }
 
 }
