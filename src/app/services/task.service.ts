@@ -1,9 +1,9 @@
 // service is like a class
 import { Injectable } from '@angular/core';
-import { Observable,of } from 'rxjs';
+import { Observable } from 'rxjs';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import {Task} from "../Task";
-import {TASKS} from "../mock-tasks";
+
 
 
 @Injectable({
@@ -19,5 +19,10 @@ export class TaskService {
     // of() -> turns inside into observable
     // getting data from backend
     return this.http.get<Task[]>(this.apiUrl);
+  }
+
+  delTask(task:Task):Observable<Task>{
+    const url=`${this.apiUrl}/${task.id}`;
+    return this.http.delete<Task>(url);
   }
 }

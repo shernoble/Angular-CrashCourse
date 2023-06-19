@@ -26,4 +26,13 @@ export class TasksComponent {
     })
   }
 
+  delTask(task : Task){
+    // calls method in taskService, deletes it from backend and then filters it out in ui, thats why tasks.filter
+    // .subscribe is like .then
+    this.taskService.delTask(task)
+    .subscribe(() => {
+      this.tasks=this.tasks.filter(t => t.id != task.id);
+    })
+  }
+
 }
