@@ -1,5 +1,5 @@
 <!-- []=> for input, ()=>output, for ngModel =>[()] since 2-way data binding -->
-<form class="add-form" (ngSubmit)="onSubmit()">
+<form  *ngIf="showAddTask" class="add-form" (ngSubmit)="onSubmit()">
     <div class="form-control">
         <label for="text">Task</label>
         <input type="text" name="text" id="text" [(ngModel)]="text" placeholder="Add task">
